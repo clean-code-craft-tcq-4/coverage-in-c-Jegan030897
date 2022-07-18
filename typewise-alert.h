@@ -27,10 +27,10 @@ typedef struct {
 #define HI_ACTIVE_COOLING_LOW_LIMIT        41
 #define HI_ACTIVE_COOLING_HIGH_LIMIT       45
 #define MED_ACTIVE_COOLING_LOW_LIMIT       36
-#define MED_ACTIVE_COOLING_LOW_LIMIT       40
+#define MED_ACTIVE_COOLING_HIGH_LIMIT       40
 
 #define checkBreach(currentvalue, lowerLimit, upperLimit)
-({
+(
   BreachType currentBreach = NORMAL;
   if(value < lowerLimit) {
      currentBreach = TOO_LOW;
@@ -38,7 +38,7 @@ typedef struct {
   if(value > upperLimit) {
     currentBreach = TOO_HIGH;
   }
-})
+)
 
 void checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
