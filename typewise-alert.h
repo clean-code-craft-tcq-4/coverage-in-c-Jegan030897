@@ -38,7 +38,7 @@ typedef struct {
     currentBreach = TOO_HIGH;                               \
   }else {                                                   \
   }                                                         \
-  currentBreach;-                                           \
+  currentBreach;                                            \
 })                                                          \
 
 void checkAndAlert(
