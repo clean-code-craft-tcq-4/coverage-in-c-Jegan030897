@@ -25,6 +25,17 @@ typedef struct {
   char brand[48];
 } BatteryCharacter;
 
+#define checkBreach(currentvalue, lowerLimit, upperLimit)
+({
+  BreachType currentBreach = NORMAL;
+  if(value < lowerLimit) {
+     currentBreach = TOO_LOW;
+  }
+  if(value > upperLimit) {
+    currentBreach = TOO_HIGH;
+  }
+})
+
 void checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
 
