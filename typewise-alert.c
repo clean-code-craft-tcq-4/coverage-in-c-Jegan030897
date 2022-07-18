@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
-  checkBreach(value, lowerLimit, upperLimit)
+  return checkBreach(value, lowerLimit, upperLimit)
 }
 
 BreachType classifyTemperatureBreach(
