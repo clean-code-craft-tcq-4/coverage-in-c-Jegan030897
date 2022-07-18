@@ -12,9 +12,6 @@ typedef enum {
   TOO_HIGH
 } BreachType;
 
-BreachType inferBreach(double value, double lowerLimit, double upperLimit);
-BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
-
 typedef enum {
   TO_CONTROLLER,
   TO_EMAIL
@@ -24,6 +21,13 @@ typedef struct {
   CoolingType coolingType;
   char brand[48];
 } BatteryCharacter;
+
+#define PASSIVE_COOLING_LOW_LIMIT          30
+#define PASSIVE_COOLING_HIGH_LIMIT         35
+#define HI_ACTIVE_COOLING_LOW_LIMIT        41
+#define HI_ACTIVE_COOLING_HIGH_LIMIT       45
+#define MED_ACTIVE_COOLING_LOW_LIMIT       36
+#define MED_ACTIVE_COOLING_LOW_LIMIT       40
 
 #define checkBreach(currentvalue, lowerLimit, upperLimit)
 ({
@@ -38,6 +42,9 @@ typedef struct {
 
 void checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
+
+BreachType inferBreach(double value, double lowerLimit, double upperLimit);
+BreachType classifyTemperatureBreach(CoolingType coolingType, double temperatureInC);
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
