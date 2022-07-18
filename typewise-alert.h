@@ -22,23 +22,26 @@ typedef struct {
   char brand[48];
 } BatteryCharacter;
 
-#define PASSIVE_COOLING_LOW_LIMIT          30
-#define PASSIVE_COOLING_HIGH_LIMIT         35
-#define HI_ACTIVE_COOLING_LOW_LIMIT        41
-#define HI_ACTIVE_COOLING_HIGH_LIMIT       45
-#define MED_ACTIVE_COOLING_LOW_LIMIT       36
+#define PASSIVE_COOLING_LOW_LIMIT           30
+#define PASSIVE_COOLING_HIGH_LIMIT          35
+#define HI_ACTIVE_COOLING_LOW_LIMIT         41
+#define HI_ACTIVE_COOLING_HIGH_LIMIT        45
+#define MED_ACTIVE_COOLING_LOW_LIMIT        36
 #define MED_ACTIVE_COOLING_HIGH_LIMIT       40
 
 #define checkBreach(currentvalue, lowerLimit, upperLimit)
-(
+({
   BreachType currentBreach = NORMAL;
   if(value < lowerLimit) {
      currentBreach = TOO_LOW;
   }
-  if(value > upperLimit) {
+  else if(value > upperLimit) {
     currentBreach = TOO_HIGH;
   }
-)
+  else{
+  }
+  currentBreach;
+})
 
 void checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
