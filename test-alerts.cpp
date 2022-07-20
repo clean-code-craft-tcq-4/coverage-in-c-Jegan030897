@@ -21,6 +21,7 @@ TEST_CASE("classify passive cooling limits") {
 }
 
 TEST_CASE("classify med active cooling limits") {
+  BatteryCharacter batteryChar;
   batteryChar.coolingType = MED_ACTIVE_COOLING;
   REQUIRE(classifyTemperatureBreach(batteryChar, 20) == TOO_LOW);
   REQUIRE(classifyTemperatureBreach(batteryChar, 36) == TOO_HIGH);
