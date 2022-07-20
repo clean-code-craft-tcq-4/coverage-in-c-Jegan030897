@@ -27,22 +27,22 @@ void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double
   }
 }
 
-void getControllerID(void) {
+void GetControllerID(void) {
   char getID[] = "0xfa10";
   sprintf(getControllerID,"%s",getID);
 }
 
-void getuserEmailID(void) {
+void GetuserEmailID(void) {
   char getID[] = "a.b@c.com";
   sprintf(getuseremailID,"%s",getID);
 }
 
 void sendToController(BreachType breachType) {
-  getControllerID(void);
+  GetControllerID();
   SEND_MSG_TO_CONTROLLER(getControllerID, strlen(getControllerID), breachType);
 }
 
 void sendToEmail(BreachType breachType) {
-  getuserEmailID(void);
+  GetuserEmailID();
   SEND_MSG_THROUGH_EMAIL(getuseremailID, strlen(getuseremailID), breachType);
 }
