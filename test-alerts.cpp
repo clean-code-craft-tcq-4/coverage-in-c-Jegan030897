@@ -13,6 +13,7 @@ TEST_CASE("infers the breach according to limits") {
 TEST_CASE("classify breach") {
   BatteryCharacter batteryChar;
   batteryChar.coolingType = PASSIVE_COOLING;
+  batteryChar.brand = LI_ION_BATTERY;
   REQUIRE(classifyTemperatureBreach(batteryChar, -5) == TOO_LOW);
   REQUIRE(classifyTemperatureBreach(batteryChar, 36) == TOO_HIGH);
   REQUIRE(classifyTemperatureBreach(batteryChar, 35) == NORMAL);
