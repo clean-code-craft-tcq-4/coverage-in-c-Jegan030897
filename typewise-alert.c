@@ -1,7 +1,7 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
-char *getControllerID
+char *getControllerID;
 char *getuseremailID;
 
 int Battery_TempLimit[NUMBER_OF_BATTERY_TYPE][6] = 
