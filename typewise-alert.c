@@ -1,38 +1,20 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
+Battery_TempLimit[NUMBER_OF_BATTERY_TYPE][NUMBER_OF_BATTERY_TYPE][6] = 
+{PASSIVE_COOLING_LOW_LIMIT,  PASSIVE_COOLING_HIGH_LIMIT,  MED_ACTIVE_COOLING_LOW_LIMIT,  MED_ACTIVE_COOLING_HIGH_LIMIT,  HI_ACTIVE_COOLING_LOW_LIMIT,  HI_ACTIVE_COOLING_HIGH_LIMIT};
+
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
   return checkBreach(value, lowerLimit, upperLimit);
 }
 
-BreachType classifyTemperatureBreach(
-    CoolingType coolingType, double temperatureInC) {
-  int lowerLimit = 0;
-  int upperLimit = 0;
-  switch(coolingType) {
-    case PASSIVE_COOLING:
-      lowerLimit = 0;
-      upperLimit = 35;
-      break;
-    case HI_ACTIVE_COOLING:
-      lowerLimit = 0;
-      upperLimit = 45;
-      break;
-    case MED_ACTIVE_COOLING:
-      lowerLimit = 0;
-      upperLimit = 40;
-      break;
-  }
-  return inferBreach(temperatureInC, lowerLimit, upperLimit);
+BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temperatureInC) {
+  return inferBreach(temperatureInC, Battery_TempLimit[batteryChar.brand][batteryChar.brand][batteryChar.coolingType], Battery_TempLimit[batteryType_e][batteryType_e][batteryChar.coolingType+1]);
 }
 
-void checkAndAlert(
-    AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
-
-  BreachType breachType = classifyTemperatureBreach(
-    batteryChar.coolingType, temperatureInC
-  );
-
+void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
+  BreachType breachType = classifyTemperatureBreach(batteryChar, temperatureInC);
+  
   switch(alertTarget) {
     case TO_CONTROLLER:
       sendToController(breachType);
