@@ -3,6 +3,8 @@
 
 char *getControllerID;
 char *getuseremailID;
+char *receiveControllerID;
+char *receiveuseremailID;
 
 int Battery_TempLimit[NUMBER_OF_BATTERY_TYPE][6] = 
 {PASSIVE_COOLING_LOW_LIMIT,  PASSIVE_COOLING_HIGH_LIMIT,  MED_ACTIVE_COOLING_LOW_LIMIT,  MED_ACTIVE_COOLING_HIGH_LIMIT,  HI_ACTIVE_COOLING_LOW_LIMIT,  HI_ACTIVE_COOLING_HIGH_LIMIT};
