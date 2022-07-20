@@ -34,7 +34,4 @@ TEST_CASE("check and alert") {
   batteryChar.coolingType = PASSIVE_COOLING;
   batteryChar.brand = LI_ION_BATTERY;
   checkAndAlert(TO_CONTROLLER , batteryChar, 40);
-  REQUIRE(classifyTemperatureBreach(batteryChar, -5) == TOO_LOW);
-  checkAndAlert(TO_EMAIL , batteryChar, 40);
-  REQUIRE(classifyTemperatureBreach(batteryChar, -5) == TOO_LOW);
 }
