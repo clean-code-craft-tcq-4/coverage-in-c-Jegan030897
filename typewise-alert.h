@@ -40,28 +40,28 @@ typedef struct {
 #define MED_ACTIVE_COOLING_LOW_LIMIT        36
 #define MED_ACTIVE_COOLING_HIGH_LIMIT       40
 
-#define checkBreach(currentvalue, lowerLimit, upperLimit)   \
-({                                                          \
-  BreachType currentBreach = NORMAL;                        \
-  if (value < lowerLimit) {                                 \
-     currentBreach = TOO_LOW;                               \
-  }else if (value > upperLimit) {                           \
-    currentBreach = TOO_HIGH;                               \
-  }else {                                                   \
-  }                                                         \
-  currentBreach;                                            \
-})                                                          \
+#define checkBreach(currentvalue, lowerLimit, upperLimit)               \
+({                                                                      \
+  BreachType currentBreach = NORMAL;                                    \
+  if (value < lowerLimit) {                                             \
+     currentBreach = TOO_LOW;                                           \
+  }else if (value > upperLimit) {                                       \
+    currentBreach = TOO_HIGH;                                           \
+  }else {                                                               \
+  }                                                                     \
+  currentBreach;                                                        \
+})                                                                      \
 
 #define SEND_MSG_TO_CONTROLLER(receiveControllerID, length, breachType) \
 ({                                                                      \
-  for(int i = 0; i < length;i++)                                        \
+  for(int i = 0; i < (int)length;i++)                                   \
      printf("%c", *(receiveControllerID + i));                          \
   printf(": %x\n", breachType);                                         \
 })                                                                      \  
 
 #define SEND_MSG_THROUGH_EMAIL(receiveuseremailID, length, breachType)  \
 ({                                                                      \
-  for(int i = 0; i < length;i++)                                        \
+  for(int i = 0; i < (int)length;i++)                                   \
     printf("%c", *(receiveuseremailID + i));                            \
   if (TOO_LOW == breachType) {                                          \                          
     printf("Hi, the temperature is too low\n");                         \
@@ -80,5 +80,5 @@ BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temper
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
-void getControllerID(void);
-void getuserEmailID(void);
+void GetControllerID(void);
+void GetuserEmailID(void);
