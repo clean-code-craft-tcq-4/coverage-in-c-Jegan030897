@@ -25,5 +25,9 @@ TEST_CASE("classify the breach according to limits") {
   BatteryCharacter batteryChar;
   batteryChar.coolingType = PASSIVE_COOLING;
   REQUIRE(classifyTemperatureBreach(batteryChar, 20) == TOO_LOW);
+  REQUIRE(classifyTemperatureBreach(batteryChar, 36) == TOO_HIGH);
+  REQUIRE(classifyTemperatureBreach(batteryChar, 35) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(batteryChar, 30) == NORMAL);
+  REQUIRE(classifyTemperatureBreach(batteryChar, 32) == NORMAL);
 }
 
