@@ -28,7 +28,7 @@ typedef struct {
 } BatteryCharacter;
 
 #define HEADER                              0xfeed
-#define RECEPIENT                           a.b@c.com
+#define RECEPIENT                           "a.b@c.com"
 
 #define PASSIVE_COOLING_LOW_LIMIT           30
 #define PASSIVE_COOLING_HIGH_LIMIT          35
