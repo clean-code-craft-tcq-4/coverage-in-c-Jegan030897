@@ -1,7 +1,7 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
-double Battery_TempLimit[1][6] = 
+int Battery_TempLimit[1][6] = 
 {PASSIVE_COOLING_LOW_LIMIT,  PASSIVE_COOLING_HIGH_LIMIT,  MED_ACTIVE_COOLING_LOW_LIMIT,  MED_ACTIVE_COOLING_HIGH_LIMIT,  HI_ACTIVE_COOLING_LOW_LIMIT,  HI_ACTIVE_COOLING_HIGH_LIMIT};
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
@@ -9,8 +9,8 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
 }
 
 BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temperatureInC) {
-  double LowLimit = batteryChar.coolingType;
-  double UpperLimit = LowLimit + 1;
+  int LowLimit = batteryChar.coolingType;
+  int UpperLimit = LowLimit + 1;
   return inferBreach(temperatureInC, Battery_TempLimit[0][LowLimit], Battery_TempLimit[0][UpperLimit]);
 }
 
