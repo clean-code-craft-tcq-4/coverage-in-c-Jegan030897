@@ -27,6 +27,9 @@ typedef struct {
   char brand[48];
 } BatteryCharacter;
 
+#define HEADER                              0xfeed
+#define RECEPIENT                           a.b@c.com
+
 #define PASSIVE_COOLING_LOW_LIMIT           30
 #define PASSIVE_COOLING_HIGH_LIMIT          35
 #define HI_ACTIVE_COOLING_LOW_LIMIT         41
@@ -46,6 +49,23 @@ typedef struct {
   currentBreach;                                            \
 })                                                          \
 
+#define SEND_MSG_TO_CONTROLLER(breachType)                  \
+({                                                          \
+  printf("%x : %x\n", HEADER, breachType);                  \
+})                                                          \  
+
+#define SEND_MSG_THROUGH_EMAIL(breachType)                  \
+({                                                          \
+  if (TOO_LOW == breachType) {                              \
+    printf("To: %s\n", RECEPIENT);                          \
+    printf("Hi, the temperature is too low\n");             \
+  }else if (TOO_HIGH == breachType) {                       \
+    printf("To: %s\n", RECEPIENT);                          \
+    printf("Hi, the temperature is too high\n");            \
+  }else {                                                   \
+    /* nothing to do */                                     \
+  }                                                         \
+})                                                          \
 
 void checkAndAlert(
   AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
