@@ -52,14 +52,14 @@ typedef struct {
   currentBreach;                                                        \
 })                                                                      \
 
-#define SEND_MSG_TO_CONTROLLER(receiveControllerID, length, breachType) \
+#define SEND_MSG_TO_CONTROLLER(*receiveControllerID, length, breachType) \
 ({                                                                      \
   for(int i = 0; i < (int)length;i++)                                   \
      printf("%c", *(receiveControllerID + i));                          \
   printf(": %x\n", breachType);                                         \
 })                                                                      \  
 
-#define SEND_MSG_THROUGH_EMAIL(receiveuseremailID, length, breachType)  \
+#define SEND_MSG_THROUGH_EMAIL(*receiveuseremailID, length, breachType)  \
 ({                                                                      \
   for(int i = 0; i < (int)length;i++)                                   \
     printf("%c", *(receiveuseremailID + i));                            \
