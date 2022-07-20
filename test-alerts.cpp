@@ -36,4 +36,5 @@ TEST_CASE("check and alert") {
   checkAndAlert(TO_EMAIL , batteryChar, 40);
   checkAndAlert(TO_CONTROLLER , batteryChar, 40);
   checkAndAlert(TO_EMAIL , batteryChar, 40);
+  sendToEmail(NORMAL);
 }
