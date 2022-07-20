@@ -23,7 +23,7 @@ TEST_CASE("infers the breach according to limits") {
 
 TEST_CASE("classify the breach according to limits") {
   BatteryCharacter batteryChar;
-  batteryChar.coolingType = PASSIVE_COOLING_LOW_LIMIT;
+  batteryChar.coolingType = PASSIVE_COOLING;
   REQUIRE(classifyTemperatureBreach(batteryChar, 20) == TOO_LOW);
 }
 
