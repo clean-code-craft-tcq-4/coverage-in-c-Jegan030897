@@ -2,8 +2,8 @@
 
 typedef enum {
   PASSIVE_COOLING = 0,
-  HI_ACTIVE_COOLING = 2,
-  MED_ACTIVE_COOLING = 4,
+  MED_ACTIVE_COOLING = 2,
+  HI_ACTIVE_COOLING = 4,
 } CoolingType;
 
 typedef enum {
