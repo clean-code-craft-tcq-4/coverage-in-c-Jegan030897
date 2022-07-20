@@ -11,7 +11,8 @@ BreachType inferBreach(double value, double lowerLimit, double upperLimit) {
 BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temperatureInC) {
   int LowLimit = batteryChar.coolingType;
   int UpperLimit = LowLimit + 1;
-  return inferBreach(temperatureInC, Battery_TempLimit[0][LowLimit], Battery_TempLimit[0][UpperLimit]);
+  int BatteryBrand = batteryChar.brand;
+  return inferBreach(temperatureInC, Battery_TempLimit[BatteryBrand][LowLimit], Battery_TempLimit[BatteryBrand][UpperLimit]);
 }
 
 void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
