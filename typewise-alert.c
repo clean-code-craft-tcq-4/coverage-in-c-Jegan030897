@@ -1,7 +1,7 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
-char *getControllerID;
+char *getControllerID
 char *getuseremailID;
 
 int Battery_TempLimit[NUMBER_OF_BATTERY_TYPE][6] = 
@@ -28,19 +28,21 @@ void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double
 }
 
 void getControllerID(void) {
-  getControllerID = "0xfa10";
+  char *getID = "0xfa10";
+  sprintf(getControllerID,"%s",getID);
 }
 
 void getuserEmailID(void) {
-  getuseremailID = "a.b@c.com";
+  char *getID = "a.b@c.com";
+  sprintf(getuseremailID,"%s",getID);
 }
 
 void sendToController(BreachType breachType) {
-  getControllerID();
+  getControllerID(void);
   SEND_MSG_TO_CONTROLLER(getControllerID, strlen(getControllerID), breachType);
 }
 
 void sendToEmail(BreachType breachType) {
-  getuserEmailID();
+  getuserEmailID(void);
   SEND_MSG_THROUGH_EMAIL(getuseremailID, strlen(getuseremailID), breachType);
 }
