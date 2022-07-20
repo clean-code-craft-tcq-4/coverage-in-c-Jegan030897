@@ -28,12 +28,12 @@ void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double
 }
 
 void getControllerID(void) {
-  char *getID = "0xfa10";
+  char getID[] = "0xfa10";
   sprintf(getControllerID,"%s",getID);
 }
 
 void getuserEmailID(void) {
-  char *getID = "a.b@c.com";
+  char getID[] = "a.b@c.com";
   sprintf(getuseremailID,"%s",getID);
 }
 
