@@ -32,7 +32,7 @@ TEST_CASE("classify breach") {
 
 TEST_CASE("send email") {
   sendToController(TOO_LOW);
-  SEND_MSG_TO_CONTROLLER(getControllerID, strlen(getControllerID), breachType);
+  SEND_MSG_TO_CONTROLLER(getControllerID, strlen(getControllerID), TOO_LOW);
   REQUIRE(strcmp(getControllerID, receiveControllerID) == 0);
   
 }
