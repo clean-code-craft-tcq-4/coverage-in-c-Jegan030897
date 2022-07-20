@@ -33,7 +33,7 @@ TEST_CASE("classify breach") {
 TEST_CASE("send email") {
   sendToController(TOO_LOW);
   SEND_MSG_TO_CONTROLLER(getControllerID, strlen(getControllerID), TOO_LOW);
-  for(int i, i<strlen(getControllerID), i++)
+  for(int i; i<strlen(getControllerID); i++)
     REQUIRE(strcmp(*(getControllerID+i), *(receiveControllerID+i) == 0);
   
 }
