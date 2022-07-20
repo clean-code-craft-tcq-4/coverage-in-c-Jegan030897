@@ -33,6 +33,7 @@ TEST_CASE("check and alert") {
   BatteryCharacter batteryChar;
   batteryChar.coolingType = PASSIVE_COOLING;
   batteryChar.brand = LI_ION_BATTERY;
+  checkAndAlert(TO_EMAIL , batteryChar, 40);
   checkAndAlert(TO_CONTROLLER , batteryChar, 40);
   checkAndAlert(TO_EMAIL , batteryChar, 40);
 }
