@@ -31,7 +31,7 @@ typedef struct {
 } BatteryCharacter;
 
 #define CONTROLLER_ID                       "0xfeed"
-#define EMAIL_ID                            "ab@c.bsh.com"
+#define EMAIL_ID                            "ab.com"
 
 #define PASSIVE_COOLING_LOW_LIMIT           30
 #define PASSIVE_COOLING_HIGH_LIMIT          35
