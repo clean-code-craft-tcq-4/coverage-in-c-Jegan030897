@@ -30,7 +30,7 @@ void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double
 }
 
 void GetControllerID(void) {
-  char getID[] = "0xfa10";
+  getControllerID = "0xfa10";
   sprintf(getControllerID,"%s",getID);
 }
 
