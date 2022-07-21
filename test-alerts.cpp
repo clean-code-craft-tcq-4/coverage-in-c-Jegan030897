@@ -31,20 +31,9 @@ TEST_CASE("classify breach") {
 }
 
 TEST_CASE("check and alert") {
-  checkAndAlert(TO_CONTROLLER,batteryChar, -5)
-  REQUIRE(classifyTemperatureBreach(batteryChar, -5) == TOO_LOW);
-}
-
-TEST_CASE("send msg to controller") {
-  sendToController(TOO_LOW);
+  BatteryCharacter batteryChar;
+  batteryChar.coolingType = PASSIVE_COOLING;
+  batteryChar.brand = LI_ION_BATTERY;
+  checkAndAlert(TO_CONTROLLER,batteryChar, 30);
   REQUIRE(strcmp(getID, "0xfeed") == 0);
 }
-
-TEST_CASE("send msg through email") {
-  sendToEmail(TOO_LOW);
-  REQUIRE(strcmp(getID, "ab.com") == 0);
-  sendToEmail(TOO_HIGH);
-  REQUIRE(strcmp(getID, "ab.com") == 0);
-}
-
-
