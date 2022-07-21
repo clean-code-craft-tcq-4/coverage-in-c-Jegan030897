@@ -29,7 +29,7 @@ typedef struct {
 } BatteryCharacter;
 
 #define CONTROLLER_ID                       0xfeed
-#define EMAIL_ID                            ab@c.bsh.com
+#define EMAIL_ID                            "ab@c.bsh.com"
 
 #define PASSIVE_COOLING_LOW_LIMIT           30
 #define PASSIVE_COOLING_HIGH_LIMIT          35
@@ -52,7 +52,7 @@ typedef struct {
 
 #define SEND_MSG_TO_CONTROLLER(breachType)                              \
 ({                                                                      \
-  printf("%s", CONTROLLER_ID);                                          \
+  printf("%x", CONTROLLER_ID);                                          \
   printf(": %x\n", breachType);                                         \
 })                                                                      \  
 
@@ -65,7 +65,7 @@ typedef struct {
     printf("%s", EMAIL_ID);                                             \                         
     printf("Hi, the temperature is too high\n");                        \
   }else {                                                               \                        
-    //nothing to do                                                     \
+    /* nothing to do */                                                 \
   }                                                                     \
 })                                                                      \
 
