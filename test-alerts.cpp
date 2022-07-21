@@ -30,9 +30,4 @@ TEST_CASE("classify breach") {
   REQUIRE(classifyTemperatureBreach(batteryChar, 45) == NORMAL);
 }
 
-TEST_CASE("send email") {
-  GetControllerID();
-  //for(int i = 0; i< (int)strlen(getControllerID); i++)
-    //REQUIRE(*(getControllerID+i) == *(receiveControllerID+i));
-  
-}
+
