@@ -54,7 +54,7 @@ typedef struct {
 
 #define SEND_MSG_TO_CONTROLLER(breachType)                              \
 ({                                                                      \
-  sprintf(getID,"%x",CONTROLLER_ID);                                    \
+  sprintf(getID,"%s",CONTROLLER_ID);                                    \
   printf("%s", getID);                                                  \
   printf(": %x\n", breachType);                                         \
 })                                                                      \  
