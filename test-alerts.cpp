@@ -31,7 +31,7 @@ TEST_CASE("classify breach") {
 }
 
 TEST_CASE("send email") {
-  sendToController(TOO_LOW);
+  GetControllerID();
   //for(int i = 0; i< (int)strlen(getControllerID); i++)
     //REQUIRE(*(getControllerID+i) == *(receiveControllerID+i));
   
