@@ -42,4 +42,7 @@ TEST_CASE("check and alert") {
   
   checkAndAlert(TO_EMAIL,batteryChar, 40);
   REQUIRE(strcmp(getID, "ab.com") == 0);
+  
+  checkAndAlert(TO_EMAIL,batteryChar, 35);
+  REQUIRE(strcmp(getID, "ab.com") == 0);
 }
