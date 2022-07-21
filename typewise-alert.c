@@ -1,7 +1,7 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
-char *getControllerID;
+//char *getControllerID;
 char *getuseremailID;
 char *receiveControllerID;
 char *receiveuseremailID;
@@ -30,7 +30,7 @@ void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double
 }
 
 void GetControllerID(void) {
-  getControllerID = "0xfa10";
+  const char *getControllerID = "0xfa10";
   sprintf(getControllerID,"%s",getID);
 }
 
