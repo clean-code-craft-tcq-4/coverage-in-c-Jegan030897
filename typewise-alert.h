@@ -1,11 +1,6 @@
 #pragma once
 #include "string.h"
 
-extern char *getControllerID;
-extern char *getuseremailID;
-extern char *receiveControllerID;
-extern char *receiveuseremailID;
-
 typedef enum {
   PASSIVE_COOLING = 0,
   MED_ACTIVE_COOLING = 2,
@@ -33,6 +28,9 @@ typedef struct {
   BatteryType brand;
 } BatteryCharacter;
 
+#define CONTROLLER_ID                       0xfeed
+#define EMAIL_ID                            ab@c.bsh.com
+
 #define PASSIVE_COOLING_LOW_LIMIT           30
 #define PASSIVE_COOLING_HIGH_LIMIT          35
 #define HI_ACTIVE_COOLING_LOW_LIMIT         41
@@ -52,23 +50,22 @@ typedef struct {
   currentBreach;                                                        \
 })                                                                      \
 
-#define SEND_MSG_TO_CONTROLLER(receiveControllerID, length, breachType) \
+#define SEND_MSG_TO_CONTROLLER(breachType)                              \
 ({                                                                      \
-  for(int i = 0; i < (int)length;i++)                                   \
-     printf("%c", *(receiveControllerID + i));                          \
+  printf("%s", CONTROLLER_ID);                                          \
   printf(": %x\n", breachType);                                         \
 })                                                                      \  
 
-#define SEND_MSG_THROUGH_EMAIL(receiveuseremailID, length, breachType)  \
+#define SEND_MSG_THROUGH_EMAIL(breachType)                              \
 ({                                                                      \
-  for(int i = 0; i < (int)length;i++)                                   \
-    printf("%c", *(receiveuseremailID + i));                            \
-  if (TOO_LOW == breachType) {                                          \                          
+  if (TOO_LOW == breachType) {                                          \
+    printf("%s", EMAIL_ID);                                             \                          
     printf("Hi, the temperature is too low\n");                         \
-  }else if (TOO_HIGH == breachType) {                                   \                         
+  }else if (TOO_HIGH == breachType) {                                   \
+    printf("%s", EMAIL_ID);                                             \                         
     printf("Hi, the temperature is too high\n");                        \
   }else {                                                               \                        
-    printf("Hi, the temperature is normal\n");                          \
+    //nothing to do                                                     \
   }                                                                     \
 })                                                                      \
 
@@ -80,5 +77,3 @@ BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temper
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
-void GetControllerID(void);
-void GetuserEmailID(void);
