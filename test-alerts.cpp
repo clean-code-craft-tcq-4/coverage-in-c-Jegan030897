@@ -32,7 +32,7 @@ TEST_CASE("classify breach") {
 
 TEST_CASE("send msg to controller") {
   sendToController(TOO_LOW);
-  REQUIRE(strcmp(getID, CONTROLLER_ID) == 0);
+  REQUIRE(strcmp(getID, "0xfeed") == 0);
 }
 
 
