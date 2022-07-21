@@ -35,4 +35,11 @@ TEST_CASE("send msg to controller") {
   REQUIRE(strcmp(getID, "0xfeed") == 0);
 }
 
+TEST_CASE("send msg through email") {
+  sendToController(TOO_LOW);
+  REQUIRE(strcmp(getID, "ab@c.bsh.com") == 0);
+  sendToController(TOO_HIGH);
+  REQUIRE(strcmp(getID, "ab@c.bsh.com") == 0);
+}
+
 
