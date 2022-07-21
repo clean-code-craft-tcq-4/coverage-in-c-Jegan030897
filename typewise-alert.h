@@ -1,7 +1,7 @@
 #pragma once
 #include "string.h"
 
-extern char getID[20];
+extern char getID[30];
 
 typedef enum {
   PASSIVE_COOLING = 0,
