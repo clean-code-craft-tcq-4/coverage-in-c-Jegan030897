@@ -36,4 +36,10 @@ TEST_CASE("check and alert") {
   batteryChar.brand = LI_ION_BATTERY;
   checkAndAlert(TO_CONTROLLER,batteryChar, 30);
   REQUIRE(strcmp(getID, "0xfeed") == 0);
+  
+  checkAndAlert(TO_EMAIL,batteryChar, 25);
+  REQUIRE(strcmp(getID, "ab.com") == 0);
+  
+  checkAndAlert(TO_EMAIL,batteryChar, 40);
+  REQUIRE(strcmp(getID, "ab.com") == 0);
 }
