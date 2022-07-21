@@ -1,11 +1,6 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
-//char *getControllerID;
-char *getuseremailID;
-char *receiveControllerID;
-char *receiveuseremailID;
-
 int Battery_TempLimit[NUMBER_OF_BATTERY_TYPE][6] = 
 {PASSIVE_COOLING_LOW_LIMIT,  PASSIVE_COOLING_HIGH_LIMIT,  MED_ACTIVE_COOLING_LOW_LIMIT,  MED_ACTIVE_COOLING_HIGH_LIMIT,  HI_ACTIVE_COOLING_LOW_LIMIT,  HI_ACTIVE_COOLING_HIGH_LIMIT};
 
@@ -29,22 +24,10 @@ void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double
   }
 }
 
-void GetControllerID(void) {
-  const char *getControllerID = "0xfa10";
-  sprintf(getControllerID,"%s",getID);
-}
-
-void GetuserEmailID(void) {
-  char getID[] = "a.b@c.com";
-  sprintf(getuseremailID,"%s",getID);
-}
-
 void sendToController(BreachType breachType) {
-  GetControllerID();
-  SEND_MSG_TO_CONTROLLER(getControllerID, strlen(getControllerID), breachType);
+  SEND_MSG_TO_CONTROLLER(breachType);
 }
 
 void sendToEmail(BreachType breachType) {
-  GetuserEmailID();
-  SEND_MSG_THROUGH_EMAIL(getuseremailID, strlen(getuseremailID), breachType);
+  SEND_MSG_THROUGH_EMAIL(breachType);
 }
