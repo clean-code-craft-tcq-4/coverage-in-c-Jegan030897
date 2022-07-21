@@ -30,6 +30,11 @@ TEST_CASE("classify breach") {
   REQUIRE(classifyTemperatureBreach(batteryChar, 45) == NORMAL);
 }
 
+TEST_CASE("check and alert") {
+  checkAndAlert(TO_CONTROLLER,batteryChar, -5)
+  REQUIRE(classifyTemperatureBreach(batteryChar, -5) == TOO_LOW);
+}
+
 TEST_CASE("send msg to controller") {
   sendToController(TOO_LOW);
   REQUIRE(strcmp(getID, "0xfeed") == 0);
