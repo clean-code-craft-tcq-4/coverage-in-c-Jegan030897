@@ -1,6 +1,8 @@
 #pragma once
 #include "string.h"
 
+extern char getID[];
+
 typedef enum {
   PASSIVE_COOLING = 0,
   MED_ACTIVE_COOLING = 2,
@@ -52,17 +54,19 @@ typedef struct {
 
 #define SEND_MSG_TO_CONTROLLER(breachType)                              \
 ({                                                                      \
-  printf("%x", CONTROLLER_ID);                                          \
+  sprintf(getID,"%s",CONTROLLER_ID);                                    \
+  printf("%x", getID);                                                  \
   printf(": %x\n", breachType);                                         \
 })                                                                      \  
 
 #define SEND_MSG_THROUGH_EMAIL(breachType)                              \
 ({                                                                      \
+  sprintf(getID,"%s",EMAIL_ID);                                         \
   if (TOO_LOW == breachType) {                                          \
-    printf("%s", EMAIL_ID);                                             \                          
+    printf("%s", getID);                                                \                          
     printf("Hi, the temperature is too low\n");                         \
   }else if (TOO_HIGH == breachType) {                                   \
-    printf("%s", EMAIL_ID);                                             \                         
+    printf("%s", getID);                                                \                         
     printf("Hi, the temperature is too high\n");                        \
   }else {                                                               \                        
     /* nothing to do */                                                 \
