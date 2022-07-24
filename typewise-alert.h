@@ -1,7 +1,10 @@
 #pragma once
 #include "string.h"
 
-extern char getID[30];
+typedef enum {
+  SW_FOR_PRODUCTION,
+  SW_FOR_TESTING
+} swType;
 
 typedef enum {
   PASSIVE_COOLING = 0,
@@ -33,11 +36,11 @@ typedef struct {
 #define CONTROLLER_ID                       "0xfeed"
 #define EMAIL_ID                            "ab.com"
 
-#define PASSIVE_COOLING_LOW_LIMIT           30
+#define PASSIVE_COOLING_LOW_LIMIT           0
 #define PASSIVE_COOLING_HIGH_LIMIT          35
-#define HI_ACTIVE_COOLING_LOW_LIMIT         41
+#define HI_ACTIVE_COOLING_LOW_LIMIT         0
 #define HI_ACTIVE_COOLING_HIGH_LIMIT        45
-#define MED_ACTIVE_COOLING_LOW_LIMIT        36
+#define MED_ACTIVE_COOLING_LOW_LIMIT        0
 #define MED_ACTIVE_COOLING_HIGH_LIMIT       40
 
 #define checkBreach(currentvalue, lowerLimit, upperLimit)               \
@@ -74,10 +77,12 @@ typedef struct {
 })                                                                      \
 
 void checkAndAlert(
-  AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC);
+  AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC, , swType getSWtype);
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temperatureInC);
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
+void swforProduction(BreachType breachType, AlertTarget alertTarget);
+void swforTesting(BreachType breachType, AlertTarget alertTarget);
