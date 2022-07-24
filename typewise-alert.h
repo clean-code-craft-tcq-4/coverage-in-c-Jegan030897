@@ -80,5 +80,7 @@ BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temper
 
 void sendToController(BreachType breachType);
 void sendToEmail(BreachType breachType);
+void sendToController_forTesting(BreachType breachType);
+void sendToEmail_forTesting(BreachType breachType);
 void swforProduction(BreachType breachType, AlertTarget alertTarget);
 void swforTesting(BreachType breachType, AlertTarget alertTarget);
