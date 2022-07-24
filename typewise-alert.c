@@ -1,8 +1,6 @@
 #include "typewise-alert.h"
 #include <stdio.h>
 
-char getID[30];
-
 int Battery_TempLimit[NUMBER_OF_BATTERY_TYPE][6] = 
 {PASSIVE_COOLING_LOW_LIMIT,  PASSIVE_COOLING_HIGH_LIMIT,  MED_ACTIVE_COOLING_LOW_LIMIT,  MED_ACTIVE_COOLING_HIGH_LIMIT,  HI_ACTIVE_COOLING_LOW_LIMIT,  HI_ACTIVE_COOLING_HIGH_LIMIT};
 
@@ -17,8 +15,24 @@ BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temper
   return inferBreach(temperatureInC, Battery_TempLimit[BatteryBrand][LowLimit], Battery_TempLimit[BatteryBrand][UpperLimit]);
 }
 
-void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC) {
+void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC, swType getSWtype) {
   BreachType breachType = classifyTemperatureBreach(batteryChar, temperatureInC);
+  
+  void (*selectSW[])(breachType, alertTarget) = {swforProduction, swforTesting};
+  selectSW[getSWtype](breachType, alertTarget);
+}
+
+void swforProduction(BreachType breachType, AlertTarget alertTarget)
+{
+  if(TO_CONTROLLER == alertTarget){
+    sendToController(breachType);
+  }else {
+    sendToEmail(breachType);
+  }
+}
+
+void swforTesting(BreachType breachType, AlertTarget alertTarget)
+{
   if(TO_CONTROLLER == alertTarget){
     sendToController(breachType);
   }else {
