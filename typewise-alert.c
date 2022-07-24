@@ -18,7 +18,7 @@ BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temper
 void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC, swType getSWtype) {
   BreachType breachType = classifyTemperatureBreach(batteryChar, temperatureInC);
   
-  void (*selectSW[NUMBER_OF_SW])(breachType, alertTarget) = {swforProduction, swforTesting};
+  void (*selectSW[NUMBER_OF_SW])(BreachType, AlertTarget) = {swforProduction, swforTesting};
   selectSW[getSWtype](breachType, alertTarget);
 }
 
