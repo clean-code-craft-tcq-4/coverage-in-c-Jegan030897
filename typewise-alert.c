@@ -34,16 +34,16 @@ void swforProduction(BreachType breachType, AlertTarget alertTarget)
 void swforTesting(BreachType breachType, AlertTarget alertTarget)
 {
   if(TO_CONTROLLER == alertTarget){
-    sendToController(breachType);
+    sendToController_forTesting(breachType);
   }else {
-    sendToEmail(breachType);
+    sendToEmail_forTesting(breachType);
   }
 }
 
 void sendToController(BreachType breachType) {
-  SEND_MSG_TO_CONTROLLER(breachType);
+  //will be processed in real time hw setup
 }
 
 void sendToEmail(BreachType breachType) {
-  SEND_MSG_THROUGH_EMAIL(breachType);
+  //will be processed in real time
 }
