@@ -3,7 +3,8 @@
 
 typedef enum {
   SW_FOR_PRODUCTION,
-  SW_FOR_TESTING
+  SW_FOR_TESTING,
+  NUMBER_OF_SW
 } swType;
 
 typedef enum {
@@ -56,20 +57,15 @@ typedef struct {
 })                                                                      \
 
 #define SEND_MSG_TO_CONTROLLER(breachType)                              \
-({                                                                      \
-  sprintf(getID,"%s",CONTROLLER_ID);                                    \
-  printf("%s", getID);                                                  \
+({                                                                      \                                                 
   printf(": %x\n", breachType);                                         \
 })                                                                      \  
 
 #define SEND_MSG_THROUGH_EMAIL(breachType)                              \
 ({                                                                      \
-  sprintf(getID,"%s",EMAIL_ID);                                         \
-  if (TOO_LOW == breachType) {                                          \
-    printf("%s", getID);                                                \                          
+  if (TOO_LOW == breachType) {                                          \                        
     printf("Hi, the temperature is too low\n");                         \
-  }else if (TOO_HIGH == breachType) {                                   \
-    printf("%s", getID);                                                \                         
+  }else if (TOO_HIGH == breachType) {                                   \                        
     printf("Hi, the temperature is too high\n");                        \
   }else {                                                               \                        
     /* nothing to do */                                                 \
