@@ -73,7 +73,7 @@ typedef struct {
 })                                                                      \
 
 void checkAndAlert(
-  AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC, , swType getSWtype);
+  AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC, swType getSWtype);
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temperatureInC);
