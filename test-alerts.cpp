@@ -2,7 +2,6 @@
 
 #include "test/catch.hpp"
 #include "typewise-alert.h"
-#include "string.h"
 
 TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(20, 30, 35) == TOO_LOW);
@@ -10,7 +9,7 @@ TEST_CASE("infers the breach according to limits") {
   REQUIRE(inferBreach(35, 30, 35) == NORMAL);
   REQUIRE(inferBreach(30, 30, 35) == NORMAL);
 }
-
+/*
 TEST_CASE("classify breach") {
   BatteryCharacter batteryChar;
   batteryChar.coolingType = PASSIVE_COOLING;
@@ -29,20 +28,4 @@ TEST_CASE("classify breach") {
   REQUIRE(classifyTemperatureBreach(batteryChar, 55) == TOO_HIGH);
   REQUIRE(classifyTemperatureBreach(batteryChar, 45) == NORMAL);
 }
-
-TEST_CASE("check and alert") {
-  BatteryCharacter batteryChar;
-  batteryChar.coolingType = PASSIVE_COOLING;
-  batteryChar.brand = LI_ION_BATTERY;
-  checkAndAlert(TO_CONTROLLER,batteryChar, 30);
-  REQUIRE(strcmp(getID, "0xfeed") == 0);
-  
-  checkAndAlert(TO_EMAIL,batteryChar, 25);
-  REQUIRE(strcmp(getID, "ab.com") == 0);
-  
-  checkAndAlert(TO_EMAIL,batteryChar, 40);
-  REQUIRE(strcmp(getID, "ab.com") == 0);
-  
-  checkAndAlert(TO_EMAIL,batteryChar, 35);
-  REQUIRE(strcmp(getID, "ab.com") == 0);
-}
+*/
