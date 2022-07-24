@@ -34,6 +34,8 @@ typedef struct {
   BatteryType brand;
 } BatteryCharacter;
 
+extern BreachType breachType;
+
 #define CONTROLLER_ID                       0xfeed
 #define EMAIL_ID                            "ab.com"
 
@@ -79,9 +81,9 @@ void checkAndAlert(
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temperatureInC);
 
-void sendToController(BreachType breachType);
-void sendToEmail(BreachType breachType);
-void sendToController_forTesting(BreachType breachType);
-void sendToEmail_forTesting(BreachType breachType);
-void swforProduction(BreachType breachType, AlertTarget alertTarget);
-void swforTesting(BreachType breachType, AlertTarget alertTarget);
+void sendToController(BreachType getbreachType);
+void sendToEmail(BreachType getbreachType);
+void sendToController_forTesting(BreachType getbreachType);
+void sendToEmail_forTesting(BreachType getbreachType);
+void swforProduction(BreachType getbreachType, AlertTarget alertTarget);
+void swforTesting(BreachType getbreachType, AlertTarget alertTarget);
