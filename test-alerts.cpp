@@ -4,10 +4,17 @@
 #include "typewise-alert.h"
 
 TEST_CASE("infers the breach according to limits") {
+  BatteryCharacter batteryChar;
+  batteryChar.coolingType = PASSIVE_COOLING;
+  batteryChar.brand = LI_ION_BATTERY;
+  
+  checkAndAlert(TO_CONTROLLER,batteryChar,-5,SW_FOR_TESTING);
+  REQUIRE(breachType == TOO_LOW);
+  /*
   REQUIRE(inferBreach(20, 30, 35) == TOO_LOW);
   REQUIRE(inferBreach(36, 30, 35) == TOO_HIGH);
   REQUIRE(inferBreach(35, 30, 35) == NORMAL);
-  REQUIRE(inferBreach(30, 30, 35) == NORMAL);
+  REQUIRE(inferBreach(30, 30, 35) == NORMAL);*/
 }
 /*
 TEST_CASE("classify breach") {
