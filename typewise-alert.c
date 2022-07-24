@@ -40,10 +40,20 @@ void swforTesting(BreachType breachType, AlertTarget alertTarget)
   }
 }
 
+void sendToController_forTesting(BreachType breachType) {
+  SEND_MSG_TO_CONTROLLER(breachType);
+}
+
+void sendToEmail_forTesting(BreachType breachType) {
+  SEND_MSG_THROUGH_EMAIL(breachType); 
+}
+
 void sendToController(BreachType breachType) {
   //will be processed in real time hw setup
+  SEND_MSG_TO_CONTROLLER(breachType);
 }
 
 void sendToEmail(BreachType breachType) {
   //will be processed in real time
+  SEND_MSG_THROUGH_EMAIL(breachType);
 }
