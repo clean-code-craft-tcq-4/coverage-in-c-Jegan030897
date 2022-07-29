@@ -20,7 +20,7 @@ BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temper
 void checkAndAlert(BatteryCharacter batteryChar, double temperatureInC, void (*alterType) (BreachType getbreachType)) {
   breachType = classifyTemperatureBreach(batteryChar, temperatureInC);
   
-  (*alterType) (getbreachType);
+  (*alterType) (breachType);
 }
 
 void sendToController_forTesting(BreachType getbreachType) {
