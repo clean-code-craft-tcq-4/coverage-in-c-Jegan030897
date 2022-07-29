@@ -65,7 +65,7 @@ extern BreachType breachType;
 
 #define SEND_MSG_THROUGH_EMAIL(breachType)                              \
 ({                                                                      \
-  printf("%s\n",EMAIL_ID);                                                \
+  printf("%s\n",EMAIL_ID);                                              \
   if (TOO_LOW == breachType) {                                          \                        
     printf("Hi, the temperature is too low\n");                         \
   }else if (TOO_HIGH == breachType) {                                   \                        
@@ -75,8 +75,7 @@ extern BreachType breachType;
   }                                                                     \
 })                                                                      \
 
-void checkAndAlert(
-  AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC, swType getSWtype);
+void checkAndAlert(BatteryCharacter batteryChar, double temperatureInC, void (*alterType) (BreachType getbreachType));
 
 BreachType inferBreach(double value, double lowerLimit, double upperLimit);
 BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temperatureInC);
@@ -85,5 +84,3 @@ void sendToController(BreachType getbreachType);
 void sendToEmail(BreachType getbreachType);
 void sendToController_forTesting(BreachType getbreachType);
 void sendToEmail_forTesting(BreachType getbreachType);
-void swforProduction(BreachType getbreachType, AlertTarget alertTarget);
-void swforTesting(BreachType getbreachType, AlertTarget alertTarget);
