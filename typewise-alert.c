@@ -17,29 +17,10 @@ BreachType classifyTemperatureBreach(BatteryCharacter batteryChar, double temper
   return inferBreach(temperatureInC, Battery_TempLimit[BatteryBrand][LowLimit], Battery_TempLimit[BatteryBrand][UpperLimit]);
 }
 
-void checkAndAlert(AlertTarget alertTarget, BatteryCharacter batteryChar, double temperatureInC, swType getSWtype) {
+void checkAndAlert(BatteryCharacter batteryChar, double temperatureInC, void (*alterType) (BreachType getbreachType)) {
   breachType = classifyTemperatureBreach(batteryChar, temperatureInC);
   
-  void (*selectSW[NUMBER_OF_SW])(BreachType, AlertTarget) = {swforProduction, swforTesting};
-  selectSW[getSWtype](breachType, alertTarget);
-}
-
-void swforProduction(BreachType getbreachType, AlertTarget alertTarget)
-{
-  if(TO_CONTROLLER == alertTarget){
-    sendToController(getbreachType);
-  }else {
-    sendToEmail(getbreachType);
-  }
-}
-
-void swforTesting(BreachType getbreachType, AlertTarget alertTarget)
-{
-  if(TO_CONTROLLER == alertTarget){
-    sendToController_forTesting(getbreachType);
-  }else {
-    sendToEmail_forTesting(getbreachType);
-  }
+  (*alterType) (getbreachType);
 }
 
 void sendToController_forTesting(BreachType getbreachType) {
